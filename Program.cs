@@ -3,11 +3,6 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-public class EntryPointAttribute : Attribute
-{
-
-}
-
 static class Program
 {
     private const string nativeLibName = "vorbisHooked.dll";
@@ -279,7 +274,7 @@ static class Program
 
     public static int _fltused = 0x9875;
 
-    [EntryPoint]
+    [STAThread]
     public static int DllMain(System.IntPtr hModule, uint ul_reason_for_call, object lpReserved)
     {
 
@@ -317,5 +312,4 @@ static class Program
     internal static extern object ov_info(object vf, int link);
     [System.Runtime.InteropServices.DllImport("vorbisHooked.dll")]
     internal static extern int ov_time_seek(object vf, double pos);
-    
 }
