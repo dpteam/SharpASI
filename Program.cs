@@ -252,7 +252,7 @@ static class Program
 
     public static void loadASI()
     {
-        string binPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "sharpScripts"); // note: don't use CurrentEntryAssembly or anything like that.
+        string binPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "sharpScripts");
 
         foreach (string dll in Directory.GetFiles(binPath, "*.asi", SearchOption.AllDirectories))
         {
@@ -302,7 +302,7 @@ static class Program
         }
         return 1;
     }
-
+    
     [System.Runtime.InteropServices.DllImport("vorbisHooked.dll")]
     internal static extern int ov_open_callbacks(object datasource, object vf, ref string initial, int ibytes, ov_callbacks callbacks);
     [System.Runtime.InteropServices.DllImport("vorbisHooked.dll")]
@@ -317,4 +317,5 @@ static class Program
     internal static extern object ov_info(object vf, int link);
     [System.Runtime.InteropServices.DllImport("vorbisHooked.dll")]
     internal static extern int ov_time_seek(object vf, double pos);
+    
 }
